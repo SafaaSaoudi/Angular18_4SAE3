@@ -1,1 +1,8 @@
-id suggestion : {{id}}
+<div class="header">
+    <h2>{{sugg?.title}}</h2>
+    <div class="meta">
+      <span class="category">{{sugg?.category}}</span>
+      <span class="date">{{sugg?.date | date:'yy/MM/dd'}}</span>
+    </div>
+    <button (click)="back()">Back to list</button>
+  </div>

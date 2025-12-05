@@ -1,5 +1,6 @@
 <input type="text" placeholder="Rechercher des suggestions..." class="search-bar" [(ngModel)]="searchTerm" />
 <div class="row">
+  <button routerLink="add">Add new suggestion</button>
 <div class="container col-md-6" *ngFor="let item of suggestions" >
 
 <div class="suggestion-card" *ngIf=" item.title.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase()) || item.category.toLowerCase().includes(searchTerm.toLowerCase()) ">
@@ -25,7 +26,7 @@
     <button class="fav-btn">
       🤍 Ajouter aux favoris
     </button>
-     <button class="btn btn-primary" [routerLink]= "['details', item.id]" [queryParams]="[{txt:'hello'}, {num:123}]">
+     <button class="btn btn-primary" [routerLink]= "['details', item.id]" [queryParams]="{'txt':'hello', 'page':1}">
       Voir Details
     </button>
   </div>
@@ -34,7 +35,8 @@
 
 </div>
 <div class="col-md-6">
+  </div>
+</div>
   <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illum voluptatum molestias, exercitationem quam minus quaerat ab commodi! Ratione similique, impedit quis sit hic quia quas omnis odio molestiae officiis.</p> -->
 <router-outlet></router-outlet>
-</div>
-</div>
+

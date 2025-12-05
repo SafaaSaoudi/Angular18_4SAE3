@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Add New Suggestion</h2>
+<form [formGroup]="suggForm"  (ngSubmit)="getFormValues()">
+
+    <label for="">Titre</label>
+    <input type="text" formControlName="title" class="form-control">
+<!-- 
+    <span class="text-danger"  *ngIf="title?.invalid && title?.touched" >Wrong Field</span> -->
+    <span class="text-danger"  *ngIf="title?.errors?.['required'] && title?.touched" >Title is required</span>
+    <span class="text-danger"  *ngIf="title?.errors?.['minlength'] && title?.touched" >Title must be at least 3 characters long</span>
+
+<br>
+    <label for="">Description</label>
+    <textarea formControlName="description" class="form-control"></textarea>
+
+    <label for="">Category</label>
+    <input type="text" formControlName="category" class="form-control">
+
+    <label for="">Date</label>
+    <input type="date" formControlName="date" class="form-control">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+</div>
