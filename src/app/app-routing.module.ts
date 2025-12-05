@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListsuggestionsComponent } from './core/listsuggestions/listsuggestions.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { CardComponent } from './core/card/card.component';
-import { AddSuggestionComponent } from './core/add-suggestion/add-suggestion.component';
-import { DetailsSuggestionComponent } from './core/details-suggestion/details-suggestion.component';
+
+import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'suggestions', pathMatch:'full'},
-  {path:'suggestions', component:ListsuggestionsComponent,
-    children:[{path:'details/:param', component:DetailsSuggestionComponent},
-              {path:'add', component:AddSuggestionComponent}
-    ], data: { status: 'update '}
-
-  },
+  {path:'', redirectTo:'home', pathMatch:'full'},
+  {path:'home', component:HomeComponent},
+  
   //{path:'suggestions/details/:id', component:DetailsSuggestionComponent},
   {path:'card', component:CardComponent},
   //path pour le module user lazy loading
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+  { path: 'user', loadChildren: () => import('./features/user/user.module').then(m => m.UserModule) },
+  { path: 'suggestions', loadChildren: () => import('./features/suggestions/suggestions.module').then(m => m.SuggestionsModule) },
  
   {path:'**', component:NotfoundComponent}
 ];
